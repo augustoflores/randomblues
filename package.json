@@ -42,5 +42,9 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "bower-requirejs": "^1.2.0",
+    "scorejs": "^0.10.0"
   }
 }
