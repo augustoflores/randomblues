@@ -10,6 +10,9 @@ const reload = browserSync.reload;
 
 //var score = require('scorejs')
 
+var Vex = require('vexflow')
+
+
 var dev = true;
 
 gulp.task('styles', () => {
