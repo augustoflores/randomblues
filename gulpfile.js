@@ -9,8 +9,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 //var score = require('scorejs')
-
-var Vex = require('vexflow')
+//var Vex = require('vexflow')
 
 
 var dev = true;
