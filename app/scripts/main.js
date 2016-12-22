@@ -1,8 +1,9 @@
 (function ($,Vex) {
-  var barwidth=150;
+  // Global variables definition
   var numbars =12;
   var barspersystem=4;
   var svgwidth= 0;
+  // We define teh riff collectionn, total notes time must be equal to 4 beats or vexflow will throw an error
   var data = {
     'RIFF01': [
       {'note': 'B','register': '4','duration': 'h'},
@@ -76,6 +77,7 @@
 
   var randomblues = {
      renderSystem: function(VF,context,row,scoreslice,barspersystem) {
+      //This function is used to render each score system (or row), the number of bars in each system is required.
       function newNote(note_struct) { return new VF.StaveNote(note_struct); }
       function newAcc(type) { return new VF.Accidental(type); }
       var notesarr =[];
@@ -92,19 +94,21 @@
 
       var voice = new VF.Voice({num_beats: 4 * barspersystem,  beat_value: 4});
       voice.addTickables(notesarr);
-      var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+      var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 390);
       console.log(row);
       var posy=(row*100);
       var stave = new VF.Stave(10, posy, svgwidth-20).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
       voice.draw(context, stave);
     },
-    generateScore: function (data,bars) {
+    randomGenerateScore: function (data,bars) {
+      //This funcion randomly generates choses riffs form collection and returns an array
       var score=[];
       var riffsize= _.size(data);
       var random = _.sample(data,bars);
       return random;
     },
     renderScore: function (score,barspersystem) {
+      //This function initializez all vexflow parameters.
       var numRows = Math.ceil(score.length/barspersystem);
       var VF = Vex.Flow;
       // Create an SVG renderer and attach it to the DIV element named "boo".
@@ -117,22 +121,56 @@
       var row=0;
       for(var i=0;i<score.length;i+=barspersystem)
       { 
+         //We take array slices for each system ande send them to the render function 
          var scoreslice=score.slice(i, i+barspersystem)
          randomblues.renderSystem(VF,context,row,scoreslice,barspersystem);
          row++;
       }
     },
     playScore: function (score) {
+      //TODO Will pass score to midi/sequenser/sound library
+      /*
+      //PENDING SOUND GENERATOR
+      var tempo = 120;
+
+      var conductor = new BandJS();
+
+      conductor.setTimeSignature(2, 2);
+      conductor.setTempo(tempo);
+
+      var rightHand = conductor.createInstrument('triangle', 'oscillators');
+
+
+      rightHand.note('whole', 'C4')
+          .note('whole', 'C4')
+          .note('whole', 'C4')
+          .note('whole', 'C4');
+
+      rightHand.note('whole', 'C5')
+          .note('whole', 'D5')
+          .note('whole', 'E5')
+          .note('whole', 'F5')
+          .note('whole', 'G5')
+          .note('whole', 'A5')
+          .note('whole', 'B5')
+          .note('whole', 'C5');
+
+      var player = conductor.finish();
+      player.play();
+      */
     }
   };
 
   $(document).ready(function () {
-
-    var score=randomblues.generateScore(data,numbars);
+    //We generate the score
+    var score=randomblues.randomGenerateScore(data,numbars);
+    //We calulate dimensions for the svg object ro render.
     calulateSize();
+    // The score is send to the render function
     randomblues.renderScore(score,barspersystem);  
     //randomblues.playScore(score);
     function calulateSize(){
+      //Sets the best dimension according to device.
       var width= $( window ).width();
       svgwidth=$('#boo').width();
       if (width>800){
@@ -146,6 +184,7 @@
       }
     }
     $( window ).resize(function() {
+      //Resets the dimension accroding to window resize or orientation change.
       calulateSize();
       $( '#boo').empty();
       randomblues.renderScore(score,barspersystem);
@@ -157,29 +196,3 @@
 
 
 
-/*var tempo = 120;
-
-  var conductor = new BandJS();
-
-  conductor.setTimeSignature(2, 2);
-  conductor.setTempo(tempo);
-
-  var rightHand = conductor.createInstrument('triangle', 'oscillators');
-
-
-  rightHand.note('whole', 'C4')
-      .note('whole', 'C4')
-      .note('whole', 'C4')
-      .note('whole', 'C4');
-
-  rightHand.note('whole', 'C5')
-      .note('whole', 'D5')
-      .note('whole', 'E5')
-      .note('whole', 'F5')
-      .note('whole', 'G5')
-      .note('whole', 'A5')
-      .note('whole', 'B5')
-      .note('whole', 'C5');
-
-  var player = conductor.finish();
-  player.play();*/
