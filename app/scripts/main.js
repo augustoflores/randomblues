@@ -1,4 +1,8 @@
 (function ($,Vex) {
+  var barwidth=150;
+  var numbars =12;
+  var barspersystem=4;
+  var svgwidth= 0;
   var data = {
     'RIFF01': [
       {'note': 'B','register': '4','duration': 'h'},
@@ -71,7 +75,7 @@
   };
 
   var randomblues = {
-     renderSystem: function(VF,context,row,scoreslice) {
+     renderSystem: function(VF,context,row,scoreslice,barspersystem) {
       function newNote(note_struct) { return new VF.StaveNote(note_struct); }
       function newAcc(type) { return new VF.Accidental(type); }
       var notesarr =[];
@@ -86,11 +90,12 @@
           }
       }
 
-      var voice = new VF.Voice({num_beats: 16,  beat_value: 4});
+      var voice = new VF.Voice({num_beats: 4 * barspersystem,  beat_value: 4});
       voice.addTickables(notesarr);
       var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-      var posy=(row*20);
-      var stave = new VF.Stave(10, posy, 500).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
+      console.log(row);
+      var posy=(row*100);
+      var stave = new VF.Stave(10, posy, svgwidth-20).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
       voice.draw(context, stave);
     },
     generateScore: function (data,bars) {
@@ -106,13 +111,15 @@
       var div = document.getElementById('boo')
       var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
       // Configure the rendering context.
-      renderer.resize(800, numRows*100);
+      renderer.resize('100%', numRows*100);
       var context = renderer.getContext();
       context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed'); 
-      for(var i=0;i<score.length;i+=4)
+      var row=0;
+      for(var i=0;i<score.length;i+=barspersystem)
       { 
-         var scoreslice=score.slice(i, i+4)
-         randomblues.renderSystem(VF,context,i,scoreslice);
+         var scoreslice=score.slice(i, i+barspersystem)
+         randomblues.renderSystem(VF,context,row,scoreslice,barspersystem);
+         row++;
       }
     },
     playScore: function (score) {
@@ -120,9 +127,30 @@
   };
 
   $(document).ready(function () {
-    var score=randomblues.generateScore(data,12);
-    randomblues.renderScore(score,4);  
+
+    var score=randomblues.generateScore(data,numbars);
+    calulateSize();
+    randomblues.renderScore(score,barspersystem);  
     //randomblues.playScore(score);
+    function calulateSize(){
+      var width= $( window ).width();
+      svgwidth=$('#boo').width();
+      if (width>800){
+        barspersystem=4;
+      }else if (width<800 && width>=600){
+        barspersystem=3;
+      }else if (width<600 && width>=400){
+        barspersystem=2;        
+      }else{
+        barspersystem=1;                
+      }
+    }
+    $( window ).resize(function() {
+      calulateSize();
+      $( '#boo').empty();
+      randomblues.renderScore(score,barspersystem);
+
+    });
   });
 
 })(jQuery, Vex);
