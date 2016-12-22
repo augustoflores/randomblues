@@ -72,7 +72,6 @@
 
   var randomblues = {
      renderSystem: function(VF,context,row,scoreslice) {
-      //console.log(scoreslice);
       function newNote(note_struct) { return new VF.StaveNote(note_struct); }
       function newAcc(type) { return new VF.Accidental(type); }
       var notesarr =[];
@@ -86,27 +85,7 @@
             notesarr.push(new VF.BarNote(VF.Barline.SINGLE));
           }
       }
-      /*var notes = [
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        new VF.BarNote(VF.Barline.SINGLE),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),  
-        new VF.BarNote(VF.Barline.SINGLE),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        new VF.BarNote(VF.Barline.SINGLE),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-      ];*/
+
       var voice = new VF.Voice({num_beats: 16,  beat_value: 4});
       voice.addTickables(notesarr);
       var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
