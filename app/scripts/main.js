@@ -1,101 +1,101 @@
 (function ($,Vex) {
   var data = {
-    "RIFF01": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "B","register": "5","duration": ".5"},
-      {"note": "A","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF01': [
+      {'note': 'B','register': '4','duration': 'h'},
+      {'note': 'C','register': '4','duration': 'h'}
     ],
-    "RIFF02": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "D","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF02': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'D','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF03": [
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "G","register": "5","duration": "1"},
-      {"note": "E","register": "5","duration": "2"}
+    'RIFF03': [
+      {'note': 'B','register': '3','duration': 'w'},
     ],
-    "RIFF04": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "B","register": "5","duration": ".5"},
-      {"note": "A","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF04': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'B','register': '4','duration': 'q'},
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
+
     ],
-    "RIFF05": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "D","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF05': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'D#','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF06": [
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "G","register": "5","duration": "1"},
-      {"note": "E","register": "5","duration": "2"}
+    'RIFF06': [
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'G','register': '4','duration': 'q'},
+      {'note': 'E','register': '4','duration': 'q'}
     ],
-    "RIFF07": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "B","register": "5","duration": ".5"},
-      {"note": "A","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF07': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'B','register': '4','duration': 'q'},
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF08": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "D","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF08': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'D','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF09": [
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "G","register": "5","duration": "1"},
-      {"note": "E","register": "5","duration": "2"}
+    'RIFF09': [
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'G','register': '4','duration': 'q'},
+      {'note': 'E','register': '4','duration': 'q'}
     ],
-    "RIFF010": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "B","register": "5","duration": ".5"},
-      {"note": "A","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF010': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'B','register': '4','duration': 'q'},
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF11": [
-      {"note": "A","register": "5","duration": "1"},
-      {"note": "D","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": ".5"},
-      {"note": "C","register": "5","duration": "2"}
+    'RIFF11': [
+      {'note': 'A','register': '4','duration': 'q'},
+      {'note': 'D','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'},
+      {'note': 'C','register': '4','duration': 'q'}
     ],
-    "RIFF012": [
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "B","register": "4","duration": ".5"},
-      {"note": "G","register": "5","duration": "1"},
-      {"note": "E","register": "5","duration": "2"}
+    'RIFF012': [
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'B','register': '3','duration': 'q'},
+      {'note': 'G','register': '4','duration': 'q'},
+      {'note': 'E','register': '4','duration': 'q'}
     ]
   };
 
   var randomblues = {
-     barnotes: function() {
-      var VF = Vex.Flow;
-      // Create an SVG renderer and attach it to the DIV element named "boo".
-      var div = document.getElementById("boo")
-      var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-      // Configure the rendering context.
-      renderer.resize(800, 150);
-      var context = renderer.getContext();
-      context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-
-      //var ctx = new contextBuilder(options.canvas_sel, 350, 140);
-      //ctx.scale(0.9, 0.9); ctx.fillStyle = "#221"; ctx.strokeStyle = "#221";
-
+     renderSystem: function(VF,context,row,scoreslice) {
+      //console.log(scoreslice);
       function newNote(note_struct) { return new VF.StaveNote(note_struct); }
       function newAcc(type) { return new VF.Accidental(type); }
-
-      var notes = [
+      var notesarr =[];
+      for(var i=0;i<scoreslice.length;i++){
+        var riff =scoreslice[i];
+          for(var ii=0;ii<riff.length;ii++){
+            var note=newNote({ keys: [ riff[ii]['note']+'/'+ riff[ii]['register']],duration: riff[ii]['duration']});
+            notesarr.push(note);
+          }
+          if(i!=scoreslice.length-1){
+            notesarr.push(new VF.BarNote(VF.Barline.SINGLE));
+          }
+      }
+      /*var notes = [
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
+        new VF.BarNote(VF.Barline.SINGLE),
+        newNote({ keys: ["d/4"],duration: "q"}),
+        newNote({ keys: ["d/4"],duration: "q"}),
+        newNote({ keys: ["d/4"],duration: "q"}),
+        newNote({ keys: ["d/4"],duration: "q"}),  
         new VF.BarNote(VF.Barline.SINGLE),
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
@@ -106,20 +106,12 @@
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
         newNote({ keys: ["d/4"],duration: "q"}),
-        new VF.BarNote(VF.Barline.SINGLE),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-        newNote({ keys: ["d/4"],duration: "q"}),
-      ];
-
+      ];*/
       var voice = new VF.Voice({num_beats: 16,  beat_value: 4});
-      voice.addTickables(notes);
-
-      var formatter = new VF.Formatter().joinVoices([voice]).
-        format([voice], 320);
-
-      var stave = new VF.Stave(10, 10, 350).setContext(context).draw();
+      voice.addTickables(notesarr);
+      var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+      var posy=(row*20);
+      var stave = new VF.Stave(10, posy, 500).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
       voice.draw(context, stave);
     },
     generateScore: function (data,bars) {
@@ -128,92 +120,33 @@
       var random = _.sample(data,bars);
       return random;
     },
-    renderScore: function (randomscore,barspersystem) {
-      var numRows = Math.ceil(randomscore.length/barspersystem); 
-      //var vf = new Vex.Flow.Factory({
-      //  renderer: {selector: 'boo', width: 1800, height: 150*numRows}
-      //});
-      //var score = vf.EasyScore();
-      //var system = vf.System();
-      for(var i=0;i<randomscore.length;i+=4)
-      {
-          var barstring = "";
-          for(var ii=i;ii<i+barspersystem;ii++){
-          }
-          
-          var VF = Vex.Flow;
-          // Create an SVG renderer and attach it to the DIV element named "boo".
-          var div = document.getElementById("boo")
-          var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-          // Configure the rendering context.
-          renderer.resize(800, 150);
-          // renderer.resize(800, 150*numRows);
-
-          var context = renderer.getContext();
-          context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-          // Create a stave of width 400 at position 10, 40 on the canvas.
-          var stave = new VF.Stave(10, 10, 400);
-          // Add a clef and time signature.
-          stave.addClef("treble").addTimeSignature("4/4");
-
-          var notes = [
-            // A quarter-note C.
-            new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "q" }),
-            // A quarter-note D.
-            new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" }),
-            // A quarter-note rest. Note that the key (b/4) specifies the vertical
-            // position of the rest.
-            new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "qr" }),
-            // A C-Major chord.
-            new VF.StaveNote({clef: "treble", keys: ["c/4", "e/4", "g/4"], duration: "q" }),
-          ];
-
-          // Create a voice in 4/4 and add above notes
-          var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-          voice.addTickables(notes);
-
-          // Format and justify the notes to 400 pixels.
-          var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-          // Render voice
+    renderScore: function (score,barspersystem) {
+      var numRows = Math.ceil(score.length/barspersystem);
+      var VF = Vex.Flow;
+      // Create an SVG renderer and attach it to the DIV element named "boo".
+      var div = document.getElementById('boo')
+      var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+      // Configure the rendering context.
+      renderer.resize(800, numRows*100);
+      var context = renderer.getContext();
+      context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed'); 
+      for(var i=0;i<score.length;i+=4)
+      { 
+         var scoreslice=score.slice(i, i+4)
+         randomblues.renderSystem(VF,context,i,scoreslice);
       }
-      // Connect it to the rendering context and draw!
-      voice.draw(context, stave);
-      stave.setContext(context).draw();
     },
     playScore: function (score) {
     }
   };
 
   $(document).ready(function () {
-    randomblues.barnotes();
-    //var score=randomblues.generateScore(data,8);
-    //randomblues.renderScore(score,4);  
+    var score=randomblues.generateScore(data,12);
+    randomblues.renderScore(score,4);  
     //randomblues.playScore(score);
   });
 
 })(jQuery, Vex);
-
-/*  console.log('\'Allo \'Allo!');
-
-  var vf = new Vex.Flow.Factory({
-    renderer: {selector: 'boo', width: 500, height: 200}
-  });
-
-  var score = vf.EasyScore();
-  var system = vf.System();
-
-  system.addStave({
-    voices: [
-      score.voice(score.notes('C#5/q, B4, A4, G#4', {stem: 'up'})),
-    ]
-  }).addClef('treble').addTimeSignature('4/4');
-
-  vf.draw();
-  */
-
-
-
-
 
 
 
