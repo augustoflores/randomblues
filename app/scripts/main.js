@@ -23,7 +23,6 @@
       {'note': 'B','register': '4','duration': 'q'},
       {'note': 'A','register': '4','duration': 'q'},
       {'note': 'C','register': '4','duration': 'q'}
-
     ],
     'RIFF05': [
       {'note': 'A','register': '4','duration': 'q'},
@@ -76,7 +75,7 @@
   };
 
   var randomblues = {
-     renderSystem: function(VF,context,row,scoreslice,barspersystem) {
+     renderScoreSystem: function(VF,context,row,scoreslice) {
       //This function is used to render each score system (or row), the number of bars in each system is required.
       function newNote(note_struct) { return new VF.StaveNote(note_struct); }
       function newAcc(type) { return new VF.Accidental(type); }
@@ -107,7 +106,7 @@
       var random = _.sample(data,bars);
       return random;
     },
-    renderScore: function (score,barspersystem) {
+    renderScore: function (score) {
       //This function initializez all vexflow parameters.
       var numRows = Math.ceil(score.length/barspersystem);
       var VF = Vex.Flow;
@@ -123,29 +122,23 @@
       { 
          //We take array slices for each system ande send them to the render function 
          var scoreslice=score.slice(i, i+barspersystem)
-         randomblues.renderSystem(VF,context,row,scoreslice,barspersystem);
+         randomblues.renderScoreSystem(VF,context,row,scoreslice);
          row++;
       }
     },
     playScore: function (score) {
-      //TODO Will pass score to midi/sequenser/sound library
+      //TODO PENDING SOUND GENERATOR Will pass score to midi/sequenser/sound library
       /*
-      //PENDING SOUND GENERATOR
+      //
       var tempo = 120;
-
       var conductor = new BandJS();
-
       conductor.setTimeSignature(2, 2);
       conductor.setTempo(tempo);
-
       var rightHand = conductor.createInstrument('triangle', 'oscillators');
-
-
       rightHand.note('whole', 'C4')
           .note('whole', 'C4')
           .note('whole', 'C4')
           .note('whole', 'C4');
-
       rightHand.note('whole', 'C5')
           .note('whole', 'D5')
           .note('whole', 'E5')
@@ -154,7 +147,6 @@
           .note('whole', 'A5')
           .note('whole', 'B5')
           .note('whole', 'C5');
-
       var player = conductor.finish();
       player.play();
       */
@@ -167,7 +159,7 @@
     //We calulate dimensions for the svg object ro render.
     calulateSize();
     // The score is send to the render function
-    randomblues.renderScore(score,barspersystem);  
+    randomblues.renderScore(score);  
     //randomblues.playScore(score);
     function calulateSize(){
       //Sets the best dimension according to device.
@@ -188,7 +180,6 @@
       calulateSize();
       $( '#boo').empty();
       randomblues.renderScore(score,barspersystem);
-
     });
   });
 
