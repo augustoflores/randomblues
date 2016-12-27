@@ -1,5 +1,5 @@
+var inst=0;
 (function(global, module, define) {
-
 // A variable that can be used to interrupt things.
 var interrupted = false;
 
@@ -38,8 +38,8 @@ function resetAudio() {
       atop.currentStart = null;
     }
     var dcn = atop.ac.createDynamicsCompressor();
-    dcn.ratio = 16;
-    dcn.attack = 0.0005;
+    //dcn.ratio = 16;
+    //dcn.attack = 0.0005;
     dcn.connect(atop.ac.destination);
     atop.out = dcn;
   }
@@ -1342,12 +1342,12 @@ var Instrument = (function() {
     try {
       if (wavetable.hasOwnProperty(wavename)) {
         // Use a customized wavetable.
-        pwave = wavetable[wavename].wave;
+        var pwave = wavetable[wavename].wave;
         if (wavetable[wavename].freq) {
-          bwf = 0;
+          var bwf = 0;
           // Look for a higher-frequency variant.
-          for (k in wavetable[wavename].freq) {
-            wf = Number(k);
+          for (var k in wavetable[wavename].freq) {
+            var wf = Number(k);
             if (freq > wf && wf > bwf) {
               bwf = wf;
               pwave = wavetable[wavename].freq[bwf];
@@ -1473,9 +1473,11 @@ if (module && module.exports) {
     global[exp] = impl[exp];
   }
 }
+inst = new Instrument('piano');
+
 
 })(
-  this,                                     // global (window) object
+  window,                                     // global (window) object
   (typeof module) == 'object' && module,    // present in node.js
   (typeof define) == 'function' && define   // present with an AMD loader
 );

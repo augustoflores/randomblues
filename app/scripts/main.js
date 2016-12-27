@@ -3,6 +3,7 @@
   var numbars =12;
   var barspersystem=4;
   var svgwidth= 0;
+  var barwidth=0;
   // We define teh riff collectionn, total notes time must be equal to 4 beats or vexflow will throw an error
   var data = {
     'RIFF01': [
@@ -73,7 +74,11 @@
       {'note': 'E','register': '4','duration': 'q'}
     ]
   };
-
+  var notesdictionary={
+    "C4":"C","D4":"D","E4":"E","F4":"F","G4":"G","A4":"A","B4":"B",
+    "C5":"c","D5":"d","E5":"e","F5":"f","G5":"g","A5":"a","B5":"b",
+    "C6":"c'","D6":"d'","E6":"e'","F6":"f'","G6":"g'","A6":"a'","B6":"b'"   
+  }
   var randomblues = {
      renderScoreSystem: function(VF,context,row,scoreslice) {
       //This function is used to render each score system (or row), the number of bars in each system is required.
@@ -83,20 +88,18 @@
       for(var i=0;i<scoreslice.length;i++){
         var riff =scoreslice[i];
           for(var ii=0;ii<riff.length;ii++){
-            var note=newNote({ keys: [ riff[ii]['note']+'/'+ riff[ii]['register']],duration: riff[ii]['duration']});
+            var note=newNote({ keys: [ riff[ii]['note']+'/'+ (Number(riff[ii]['register'])+0)],duration: riff[ii]['duration']});
             notesarr.push(note);
           }
           if(i!=scoreslice.length-1){
             notesarr.push(new VF.BarNote(VF.Barline.SINGLE));
           }
       }
-
       var voice = new VF.Voice({num_beats: 4 * barspersystem,  beat_value: 4});
       voice.addTickables(notesarr);
-      var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 390);
-      console.log(row);
+      var formatter = new VF.Formatter().joinVoices([voice]).format([voice], barwidth);
       var posy=(row*100);
-      var stave = new VF.Stave(10, posy, svgwidth-20).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
+      var stave = new VF.Stave(10, posy, svgwidth).setContext(context).addClef('treble').addTimeSignature('4/4').draw();
       voice.draw(context, stave);
     },
     randomGenerateScore: function (data,bars) {
@@ -164,7 +167,7 @@
     function calulateSize(){
       //Sets the best dimension according to device.
       var width= $( window ).width();
-      svgwidth=$('#boo').width();
+      svgwidth=$('#boo').width()-20;
       if (width>800){
         barspersystem=4;
       }else if (width<800 && width>=600){
@@ -174,6 +177,7 @@
       }else{
         barspersystem=1;                
       }
+      barwidth=svgwidth-80; 
     }
     $( window ).resize(function() {
       //Resets the dimension accroding to window resize or orientation change.
